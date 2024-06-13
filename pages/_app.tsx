@@ -32,6 +32,9 @@ if (!isServer) {
   bootstrap()
 }
 
+import { Analytics } from '@vercel/analytics/react'
+
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
@@ -61,5 +64,9 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
 }
